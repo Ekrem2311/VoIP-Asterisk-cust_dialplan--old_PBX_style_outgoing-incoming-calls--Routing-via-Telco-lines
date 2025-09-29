@@ -1,10 +1,10 @@
-#The Asterisk(R) Open Source PBX
-#By Mark Spencer <markster@digium.com> and the Asterisk.org developer community.
-#Copyright (C) 2001-2025 Sangoma Technologies Corporation and other copyright holders.
+# The Asterisk(R) Open Source PBX
+# By Mark Spencer <markster@digium.com> and the Asterisk.org developer community.
+# Copyright (C) 2001-2025 Sangoma Technologies Corporation and other copyright holders.
 
-;Description of the solution used by me as a customized Dialplan to provide call routing on the same telco line to Asterisk SIP users/EXTs for incoming and outgoing calls using call access level/restrictions
-;Example -- Fixed Teleco Phone Line 1 - 0290 389 008
-;As we can see from the config files in order to work properly the calls coming to and originated through this external Telco phone line 0290 389 008, it needs these configs:
+; Description of a solution used as a customized Dialplan to provide call routing on the same Telco line to Asterisk SIP users/EXTs for incoming and outgoing calls using call access level/restrictions
+; Example -- Fixed Teleco Phone Line 1 - 0290 389 008
+; As we can see from the config files (chan_dahdi.conf, extensions.conf and sip.conf) in order for this scenario to work properly -- the calls coming to  0290 389 008 and originated through this external Telco phone line 0290 389 008, it needs these configs:
 
 
 chan_dahdi.conf
