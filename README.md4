@@ -60,7 +60,7 @@ cc_monitor_policy=generic
 
 
 
-;to explain outgoing calls for EXT 3202 in more details and continue the logic as we can see we have defined calls on extensions.conf like this:
+;to explain outgoing calls for EXT 3202 in more details and continue the logic as we can see we have defined these calls towards mobile numbers 044, 048, .... etc on extensions.conf like this:
 
 extensions.conf
 
