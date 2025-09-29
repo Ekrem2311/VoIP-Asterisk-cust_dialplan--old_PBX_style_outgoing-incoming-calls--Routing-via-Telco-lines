@@ -1,0 +1,75 @@
+;Description of the solution
+;Example Line 1 - 0290 389 008
+;As we can see from the config files in order to work properly the calls coming to and originated through this phone line, it needs these configs:
+
+
+chan_dahdi.conf
+
+# ; Span 1: WCTDM/0 "Wildcard A4B" (MASTER) 
+#;; line="2 WCTDM/0/1 FXSKS  (EC: VPMOCT032 - INACTIVE)"
+#signalling=fxs_ks
+#callerid=asreceived
+#group=0
+#context=from-0290389038          ; here context needs to be defined to match with dialplan context for incoming call
+#channel => 2
+
+
+extensions.conf
+
+# [from-0290389038]                ;so the context here defines where/on which SIP user/EXT the incoming calls through external line 0290389038 will go to internal SIP lines -- on this case EXT 3202
+# exten => s,1,Dial(SIP/3202,45)
+# same => n,Hangup()
+
+
+sip.conf
+
+[3202]
+deny=0.0.0.0/0.0.0.0
+secret=xxxx
+dtmfmode=rfc2833
+canreinvite=no
+context=mobil_via_0290389038       ; for outgoing calls we see here that EXT 32302  uses the exact external line 0290 389 038  to send calls out - it has access level defined on dialplan as we can see below 
+host=dynamic
+defaultuser=
+trustrpid=yes
+sendrpid=pai
+type=friend
+session-timers=accept
+nat=no
+port=5060
+qualify=yes
+qualifyfreq=60
+transport=udp
+avpf=no
+force_avp=no
+icesupport=no
+rtcp_mux=no
+encryption=no
+namedcallgroup=
+namedpickupgroup=
+dial=SIP/3202
+permit=0.0.0.0/0.0.0.0
+callerid=xyzrks <3202>
+callcounter=yes
+faxdetect=no
+cc_monitor_policy=generic
+
+
+
+;to explain outgoing calls for EXT 3202 in more details and continue the logic as we can see we have defined calls on extensions.conf like this:
+
+extensions.conf
+
+[mobil_via_0290389038]  ; ******* LINE 2 - MOBILE CALLS ACCESS **********
+; Calls to MOBILE OPERATORS/Numbers through Dahdi channel 2/Telco Line 2 connected on port 2 of Dahdi/digium/sangoma FXO card -- MOBILE CALLS - CHANNEL 2
+
+exten => _044XXXX.,1,Dial(DAHDI/2/${EXTEN},60)    ; we can see here that context mobil_via_0290389038 on which EXT 3202 has access level will use Dahdi channel 2 to send outgoing calls amd we now that dahdi port/channel 2 is line 0290 389 038 
+same => n,Hangup()
+exten => _045XXXX.,1,Dial(DAHDI/2/${EXTEN},60)
+same => n,Hangup()
+exten => _048XXXX.,1,Dial(DAHDI/2/${EXTEN},60)
+same => n,Hangup()
+include => fiks_via_0290389038
+
+
+;**********The same process and function is for other lines too (1, 3 ... etc) 
