@@ -32,7 +32,7 @@ deny=0.0.0.0/0.0.0.0
 secret=xxxx
 dtmfmode=rfc2833
 canreinvite=no
-context=mobil_via_0290389038       ; for outgoing calls we see here that EXT 32302  uses the exact external line 0290 389 038  to send calls out - it has access level defined on dialplan as we can see below 
+context=mobil_via_0290389038       ; for outgoing calls we see here that EXT 32302  uses the exact external line 0290 389 038  to send calls out - it has access level mobil_via_0290389038 defined on dialplan as we can see below 
 host=dynamic
 defaultuser=
 trustrpid=yes
@@ -76,5 +76,5 @@ same => n,Hangup()
 include => fiks_via_0290389038
 
 
-; So this dialplan that makes possible using the same external phone line for incoming and outgoing calls as it is requested in lot of real life scenarios to be definted exactely the same line/number and not use random lines for outgoing calls.
+; So this dialplan makes possible using the same external phone line for incoming and outgoing calls as it is requested in lot of real life scenarios, to be defined exactely the same line/number and not use random lines for outgoing calls.
 ;**********The same process and function is for other lines too (1, 3 ... etc) 
