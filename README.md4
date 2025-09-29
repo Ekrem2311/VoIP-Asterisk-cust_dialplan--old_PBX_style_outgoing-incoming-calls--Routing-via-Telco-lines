@@ -3,7 +3,7 @@
 # Copyright (C) 2001-2025 Sangoma Technologies Corporation and other copyright holders.
 
 ; Description of a solution used as a customized Dialplan to provide call routing on the same Telco line to Asterisk SIP users/EXTs for incoming and outgoing calls using call access level/restrictions
-; Example -- Fixed Teleco Phone Line 1 - 0290 389 008
+; Example -- Fixed Telco Phone Line 1 - 0290 389 008
 ; As we can see from the config files (chan_dahdi.conf, extensions.conf and sip.conf) in order for this scenario to work properly -- the calls coming to  0290 389 008 and originated through this external Telco phone line 0290 389 008, it needs these configs:
 ; This solution is applied when you have in use different single telephone lines from your provider and not E1 trunk or SIP trunk which are different scenarios and more easy to implement incoming and outgoing calls because they use same number for 30 or more channels.
 
