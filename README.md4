@@ -9,20 +9,20 @@
 
 chan_dahdi.conf
 
-# ; Span 1: WCTDM/0 "Wildcard A4B" (MASTER) 
-#;; line="2 WCTDM/0/1 FXSKS  (EC: VPMOCT032 - INACTIVE)"
-#signalling=fxs_ks
-#callerid=asreceived
-#group=0
-#context=from-0290389038          ; here context needs to be defined to match with dialplan context for incoming call
-#channel => 2
+; Span 1: WCTDM/0 "Wildcard A4B" (MASTER) 
+; line="2 WCTDM/0/1 FXSKS  (EC: VPMOCT032 - INACTIVE)"
+signalling=fxs_ks
+callerid=asreceived
+group=0
+context=from-0290389038          ; here context needs to be defined to match with dialplan context for incoming call
+channel => 2
 
 
 extensions.conf
 
-# [from-0290389038]                ;the context here defines where/on which SIP user/EXT the incoming calls through external line 0290389038 will go to internal SIP lines -- on this case EXT 3202
-# exten => s,1,Dial(SIP/3202,45)
-# same => n,Hangup()
+[from-0290389038]                ;the context here defines where/on which SIP user/EXT the incoming calls through external line 0290389038 will go to internal SIP lines -- on this case EXT 3202
+exten => s,1,Dial(SIP/3202,45)
+same => n,Hangup()
 
 
 sip.conf
